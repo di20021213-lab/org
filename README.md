@@ -25,18 +25,6 @@
 Резервная копия должна создаваться раз в день, в системном логе должна появляться запись об успешном или неуспешном выполнении операции
 Резервная копия размещается локально, в директории /tmp/backup
 На проверку направить файл crontab и скриншот с результатом работы утилиты.
-#!/bin/bash
-# Исходная директория
-SOURCE_DIR="/home/vboxuser"
-# Целевая директория
-TARGET_DIR="/tmp/backup"
-# Команда rsync. Cтандартный вывод - в /dev/null, ошибки - в лог.
-rsync -a --checksum --exclude=".*" "$SOURCE_DIR" "$TARGET_DIR" > /dev/null 2>> /var/log/backup.log
-# Проверка кода завершения rsync и запись лога
-if [ $? -eq 0 ]; then
-    echo "[$(date)] Резервное копирование успешно выполнено" >> /var/log/backup.log
-else
-    echo "[$(date)] Ошибка при выполнении резервного копирования" >> /var/log/backup.log
-fi
+[backup.sh](https://github.com/user-attachments/files/24966916/backup.sh)
 
 <img width="1208" height="777" alt="netology3" src="https://github.com/user-attachments/assets/37c3db7f-a048-4207-b70a-8e8eeed9633b" />
